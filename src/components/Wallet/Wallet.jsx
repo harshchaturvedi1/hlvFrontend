@@ -43,6 +43,8 @@ const Wallet = () => {
       // Fetch wallet details if walletId is present in local storage
       // This will happen when the user has already set up a wallet
       fetchWallet(walletId);
+    } else {
+      setLoading(false);
     }
   }, []);
 
