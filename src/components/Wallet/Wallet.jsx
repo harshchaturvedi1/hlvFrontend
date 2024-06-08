@@ -4,6 +4,7 @@ import { getWallet, setupWallet, transact } from "../../Services/api";
 import { Link, useNavigate } from "react-router-dom";
 
 const Wallet = () => {
+  const [loading, setLoading] = useState(false);
   const [wallet, setWallet] = useState(null);
   const [error, setError] = useState("");
 
@@ -37,6 +38,7 @@ const Wallet = () => {
 
   useEffect(() => {
     const walletId = localStorage.getItem("walletId");
+    setLoading(true);
     if (walletId) {
       // Fetch wallet details if walletId is present in local storage
       // This will happen when the user has already set up a wallet
@@ -50,12 +52,16 @@ const Wallet = () => {
       setWallet(wallet);
     } catch (err) {
       console.error(err);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="container">
-      {wallet ? (
+      {loading ? (
+        <div>Loading...</div>
+      ) : wallet ? (
         <WalletDetails
           wallet={wallet}
           onTransact={handleTransact}

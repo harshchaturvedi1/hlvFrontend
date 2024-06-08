@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./Transactions.css";
 import { getTransactions } from "../../Services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { CSVLink } from "react-csv";
 
 const Transactions = () => {
   const [walletId, setWalletId] = useState(null);
@@ -53,6 +54,23 @@ const Transactions = () => {
       setSortOrder(value);
     }
   };
+
+  // Prepare CSV data
+  const headers = [
+    { label: "Date", key: "date" },
+    { label: "Amount", key: "amount" },
+    { label: "Balance", key: "balance" },
+    { label: "Description", key: "description" },
+    { label: "Type", key: "type" },
+  ];
+
+  const csvData = transactions.map((transaction) => ({
+    date: new Date(transaction.date).toLocaleString(),
+    amount: transaction.amount.toFixed(4),
+    balance: transaction.balance.toFixed(4),
+    description: transaction.description,
+    type: transaction.type,
+  }));
 
   return (
     <div className="transactions">
@@ -107,6 +125,16 @@ const Transactions = () => {
           ))}
         </tbody>
       </table>
+      <div style={{ marginTop: "20px" }}>
+        <CSVLink
+          data={csvData}
+          headers={headers}
+          filename="transactions.csv"
+          className="btn btn-primary"
+        >
+          Export CSV
+        </CSVLink>
+      </div>
     </div>
   );
 };
