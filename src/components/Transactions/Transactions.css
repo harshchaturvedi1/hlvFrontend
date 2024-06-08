@@ -1,0 +1,48 @@
+.transactions {
+  overflow-x: auto;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.transactions table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.transactions th,
+.transactions td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.transactions th {
+  background-color: #f4f4f4;
+}
+.controls {
+  display: flex;
+  align-items: center;
+}
+
+.controls select,
+.controls button {
+  margin-right: 10px;
+}
+/* .controls button {
+  background-color: rgb(56, 138, 175);
+} */
+
+.controls button:last-child {
+  margin-right: 0;
+}
+.pagecount {
+  width: 400px;
+}
+
+@media (max-width: 600px) {
+  .transactions th,
+  .transactions td {
+    padding: 8px;
+  }
+}

@@ -1,0 +1,109 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+input,
+select,
+button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: rgb(8, 72, 144);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.transaction-type {
+  display: flex;
+  justify-content: space-between;
+}
+
+.transaction-type label {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+}
+
+.transaction-type input {
+  margin-right: 5px;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+.totransactions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.totransactions button {
+  width: 300px;
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: none;
+    width: 85%;
+    border-radius: 0;
+  }
+
+  input,
+  select,
+  button {
+    padding: 10px;
+  }
+}
+
+.setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setup input {
+  margin: 0 auto;
+  max-width: 90%;
+}
+
+.setup button {
+  margin: 0 auto;
+  max-width: 90%;
+}
