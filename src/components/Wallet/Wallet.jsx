@@ -128,12 +128,14 @@ const WalletDetails = ({ wallet, onTransact, error, setWallet }) => {
   const [isCredit, setIsCredit] = useState(true);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const transactionAmount = isCredit
       ? parseFloat(amount)
       : -parseFloat(amount);
-    onTransact(transactionAmount, description);
+    await onTransact(transactionAmount, description);
+    setAmount("");
+    setDescription("");
   };
 
   const handleNewWallet = () => {
